@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:layout_weight="1"
             android:orientation="vertical">
 
 
@@ -54,6 +55,13 @@
                 android:textSize="12dp" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/moreOption"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:src="@drawable/baseline_more_vert_24"/>
 
     </LinearLayout>
 

@@ -50,4 +50,10 @@ public class Datahelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    public void deleteMyContact(int userid) {
+        String qry = "delete from MyContacts where id='"+userid+"'";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.execSQL(qry);
+    }
 }

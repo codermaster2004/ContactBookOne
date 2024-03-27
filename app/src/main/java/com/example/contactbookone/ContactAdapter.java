@@ -57,6 +57,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
                         if (item.getItemId() == R.id.updateContact) {
 
+                            Intent intent = new Intent(activity, UpdateContactActivity.class);
+                            intent.putExtra("id",userid);
+                            intent.putExtra( "name",name );
+                            intent.putExtra("contact",contact);
+                            activity.startActivity(intent);
+                            activity.finish();
+
                         } else if (item.getItemId() == R.id.deleteContact) {
                             Datahelper datahelper = new Datahelper(activity);
                             datahelper.deleteMyContact(userid);

@@ -56,4 +56,11 @@ public class Datahelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL(qry);
     }
+
+    public void updateCOntact(int userid, String newname, String newcontact) {
+
+        String qry = "update MyContacts set name = '"+newname+"', contact = '"+newcontact+"' where id = '"+userid+"'";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.execSQL(qry);
+    }
 }

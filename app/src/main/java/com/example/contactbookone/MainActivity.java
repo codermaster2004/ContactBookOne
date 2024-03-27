@@ -19,9 +19,8 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton btnphone;
-ImageView ivNoData;
+    ImageView ivNoData;
     RecyclerView recyclerView;
-
     ArrayList<UserData> userDatalist = new ArrayList<>();
 
 

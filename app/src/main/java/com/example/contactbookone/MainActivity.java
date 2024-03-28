@@ -1,6 +1,7 @@
 package com.example.contactbookone;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<UserData> userDatalist = new ArrayList<>();
 
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnphone = findViewById(R.id.btnphone);
         recyclerView = findViewById(R.id.recyclerView);
         ivNoData = findViewById(R.id.ivNoData);
+        searchView = findViewById(R.id.searchView);
 
         getAllData();
 
@@ -43,6 +46,44 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String searchText) {
+                // sort the userdatalist
+                // 10 data
+                // ha or 98
+
+                searchText = searchText.replace(" ","");
+                if(searchText.trim().isEmpty())
+                {
+                    ContactAdapter contactAdapter = new ContactAdapter(MainActivity.this,userDatalist);
+                    recyclerView.setAdapter(contactAdapter);
+                }
+                else {
+                    ArrayList<UserData> tempList = new ArrayList<>();
+                    for (int i=0;i<userDatalist.size();i++)
+                    {
+                        String name = userDatalist.get(i).getName(); // Ajay, Sanjay, Haresh,Vijay
+                        String contact = userDatalist.get(i).getContact();
+
+                        if(name.toLowerCase().contains(searchText.trim().toLowerCase()) ||  contact.toLowerCase().contains(searchText.trim().toLowerCase()))
+                        {
+                            tempList.add(userDatalist.get(i));
+                        }
+                    }
+                    ContactAdapter contactAdapter = new ContactAdapter(MainActivity.this,tempList);
+                    recyclerView.setAdapter(contactAdapter);
+                }
+
+                return false;
             }
         });
 

@@ -44,6 +44,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         holder.tvName.setText(name);
         holder.tvContact.setText(contact);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         holder.moreOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
